@@ -16,7 +16,9 @@ public class EulerPhiAlgo{
         return count;
     }
     public static void main(String[] args){
-        int n = 10;
-        System.out.println(phi(n));
+            int n;
+            for (n = 1; n <= 10; n++){
+            System.out.println("phi(" + n + ") = " + phi(n));
+            }
     }
 }
