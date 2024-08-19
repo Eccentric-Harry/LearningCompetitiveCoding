@@ -34,8 +34,6 @@ public class ChineseRemaniderTheorem{
         }
      
     }
-     
-    // Driver method
     public static void main(String args[])
     {
         int num[] = {3, 4, 5};
