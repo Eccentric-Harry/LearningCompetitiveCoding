@@ -1,24 +1,23 @@
 import java.util.*;
 public class SimpleSieve{
-    public static void sieve(int  n){
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
         int[] arr = new int[n+1];
         Arrays.fill(arr, -1);
-
-        for(int i = 2; i <n; i++){
+        for(int i = 2; i*i <=n; i++){
             if(arr[i]==-1){
-                for(int j = i*i; j <n; j+=i){
-                    arr[j] = 0;
+                for(int j = i*i; j<=n; j+=i){
+                    arr[j] = 1;
                 }
             }
         }
-        for(int i = 2; i <n; i++){
-            if(arr[i] != 0){
-                System.out.print(i+ " ");
+
+        for(int i= 2; i <=n; i++){
+            if(arr[i]==-1){
+                System.out.print(i+" ");
             }
         }
     }
-    public static void main(String[] args){
-        int n = 19;
-        sieve(n);
-    }
-}
+}       

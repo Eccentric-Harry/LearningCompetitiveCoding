@@ -1,23 +1,56 @@
-public class CRT{
-    public static int crt(int[] a, int[] m, int k){
-        int x = 1;
-        int j;
-        while(true){
-            for(j = 0; j < k; j++){
-                if(x%m[j]!=a[j]){
-                    break;
-                }
-            }
-            if(j==k){
-                return x;
-            }
-            x++;
+import java.util.Scanner;
+
+// sts sir method class notes 
+public class Crt {
+
+  static int crt(int a[], int m[], int p, int n) {
+
+    int result = 0;
+
+    for (int i = 0; i < n; i++) {
+
+      int M = p / m[i]; // M1, M2, M3
+      int y = 0;
+
+      for (int j = 1; j <= m[i]; j++) {
+
+        if ((M * j) % m[i] == 1) {
+
+          y = j;
+          break;
+
         }
+      }
+
+      result = result + (a[i] * M * y);
+
     }
-    public static void main(String[] args){
-        int[] a = {2,3,2};
-        int[] m = {3,5,7};
-        int k = a.length;
-        System.out.println("x is " + crt(a, m, k));
+    return result % p;
+  }
+
+  public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+
+    int a[] = new int[n];
+
+    for (int i = 0; i < n; i++) {
+      a[i] = sc.nextInt();
     }
+
+    int p = 1;
+
+    int m[] = new int[n];
+
+    for (int i = 0; i < n; i++) {
+      m[i] = sc.nextInt();
+      p = p * m[i];
+    }
+
+    System.out.println(crt(a, m, p, n));
+
+  }
+
 }

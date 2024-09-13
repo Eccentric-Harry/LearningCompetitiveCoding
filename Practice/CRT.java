@@ -1,3 +1,4 @@
+import java.util.*;
 public class CRT{
     public static int crt(int[] a, int[] m, int k){
         int x = 1;
@@ -15,9 +16,16 @@ public class CRT{
         }
     }
         public static void main(String[] args){
-        int[] a = {2,3,2};
-        int[] m = {3,5,7};
-        int k = a.length;
-        System.out.println("x is " + crt(a, m, k));
+        Scanner sc = new Scanner(System.in);
+        int k = sc.nextInt();
+        int[] a = new int[k];
+        int[] m = new int[k];
+        for(int i = 0; i < k; i++){
+            a[i] = sc.nextInt();
+        }
+        for(int i = 0; i < k; i++){
+            m[i] = sc.nextInt();
+        }
+        System.out.println(crt(m, a, k));
     }
 }
