@@ -1,38 +1,26 @@
-import java.util.*;
-public class BlockSwap {
-  public static void swap(int[] arr, int a, int b, int k) {
-    for (int i = 0; i < k; i++) {
-      int temp = arr[a + i];
-      arr[a + i] = arr[b + i];
-      arr[b + i] = temp;
+import java.util.Arrays;
+public class BlockSwap{
+    public static int[] rotateArray(int[] arr, int k){
+        int n = arr.length;
+        k = n%k;
+        if(k==0){
+            return arr;
+        }
+        int[] newArr = new int[n];
+        int x = 0;
+        for(int i = k; i <n; i++){
+            newArr[x] = arr[i];
+            x++;
+        }
+        for(int i = 0; i <k ;i++){
+            newArr[x] = arr[i];
+        }
+        return newArr;
     }
-  }
-  public static void BlockSwap(int[] arr, int i, int k, int n) {
-    if (k == 0 || k == n)
-      return;
-    // If first part and second part are of same size
-    if (k == n - k) {
-      swap(arr, i, n - k + i, k);
-      return;
+    public static void main(String[] args){
+        int[] arr = {1,2,3,4,5};
+        int k = 2;
+        int[] newArr = rotateArray(arr,k);
+        System.out.println(Arrays.toString(newArr));
     }
-    // If first part of array is of smaller size
-    else if (k < n - k) {
-      swap(arr, i, n - k + i, k);
-      BlockSwap(arr, i, k, n - k); // second part of array is taken now
-    }
-    // If second part of array is of smaller size
-    else {
-      swap(arr, i, k, n - k);
-      BlockSwap(arr, n - k + i, 2 * k - n, k);
-    }
-  }
-  public static void main(String args[]) {
-    int[] arr = {1,2,3,4,5};
-    int n = arr.length;
-    int k = 2;
-    BlockSwap(arr, 0, k, n);
-    System.out.println("After Rotating the array ");
-    for (int i = 0; i < n; i++)
-      System.out.print(arr[i] + " ");
-  }
 }
