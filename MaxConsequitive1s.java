@@ -1,7 +1,7 @@
+import java.util.*;
 public class MaxConsequitive1s {
     public static void max1s(int n) {
         int c = 0;  
-        int t = n;
         int prevCount = 0;  
         int max = 0;  
         while (n != 0) {
@@ -9,15 +9,16 @@ public class MaxConsequitive1s {
                 c++; 
             } else {
                 prevCount = (n & 2) != 0 ? c : 0;
-                c = 0;  
+                c = 1;  
             }
-            max = Math.max(max, prevCount + c + 1);
+            max = Math.max(max, prevCount + c);
             n = n >> 1; 
         }
-        System.out.println(max + " " + Integer.toBinaryString(t));
+        System.out.println(max);
     }
     public static void main(String[] args) {
-        int n = 15581;
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
         max1s(n);
     }
 }
