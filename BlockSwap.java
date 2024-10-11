@@ -15,7 +15,7 @@ public class BlockSwap {
       swap(arr, i, n - k + i, k);
       return;
     }
-    // If first part of array is of smaller size
+    // If first part of array is of smaller 
     else if (k < n - k) {
       swap(arr, i, n - k + i, k);
       blockSwap(arr, i, k, n - k); // second part of array is taken now
